@@ -9,7 +9,6 @@ import { appConfig } from 'app/core/config/app.config';
 import { LayoutModule } from 'app/layout/layout.module';
 import { AppComponent } from 'app/app.component';
 import { appRoutes } from 'app/app.routing';
-import { DashboardComponent } from './modules/admin/dashboard/dashboard.component';
 
 const routerConfig: ExtraOptions = {
     preloadingStrategy       : PreloadAllModules,
@@ -18,8 +17,7 @@ const routerConfig: ExtraOptions = {
 
 @NgModule({
     declarations: [
-        AppComponent,
-        DashboardComponent
+        AppComponent
     ],
     imports     : [
         BrowserModule,

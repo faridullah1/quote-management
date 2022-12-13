@@ -82,6 +82,45 @@ export class AuthService
         // );
     }
 
+	/**
+	 * Sign in
+	 *
+	 * @param credentials
+	 */
+    register(credentials: { email: string; password: string; company: false }): Observable<any>
+    {
+		const response = {
+			// eslint-disable-next-line max-len, @typescript-eslint/naming-convention
+			access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOjEsIm5hbWUiOiJGYXJpZCB1bGxoYSIsImVtYWlsIjoiZmFyaWR1bGxhaDk5NkBnbWFpbC5jb20iLCJleHAiOjE3MDM5MzUxNTh9.FmgayvzwhVMabOhLHJCsiK3-ANEYqXf7I14gvESWppc',
+			user: { id: 1, name: 'Farid ullah', email: 'faridullah996@gmail.com' }
+		};
+
+		// eslint-disable-next-line max-len
+		this.accessToken = response.access_token;
+		const { email, name, id} = jwt_decode(this.accessToken) as User;
+
+		// Store the user on the user service
+		this._userService.user = { id, email, name };
+
+		// Return a new observable with the response
+		return of(response);
+
+        // return this._httpClient.post(this.baseUrl + 'auth/adminLogin', credentials).pipe(
+        //     switchMap((response: any) => {
+        //         // Store the access token in the local storage
+        //         this.accessToken = response.access_token;
+
+		// 		const { email, name, id} = jwt_decode(this.accessToken) as User;
+
+        //         // Store the user on the user service
+        //         this._userService.user = { id, name, email };
+
+        //         // Return a new observable with the response
+        //         return of(response);
+        //     })
+        // );
+    }
+
     /**
      * Sign out
      */
