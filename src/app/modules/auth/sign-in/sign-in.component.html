@@ -68,23 +68,29 @@
                     </mat-error>
                 </mat-form-field>
 
-                <!-- Submit button -->
-                <button
-                    class="fuse-mat-button-large w-full mt-6"
-                    mat-flat-button
-                    [color]="'primary'"
-                    [disabled]="signInForm.disabled"
-					type="button"
-                    (click)="signIn()">
-                    <span *ngIf="!signInForm.disabled">
-                        Sign in
-                    </span>
-                    <mat-progress-spinner
-                        *ngIf="signInForm.disabled"
-                        [diameter]="24"
-                        [mode]="'indeterminate'">
-					</mat-progress-spinner>
-                </button>
+				<div class="flex items-center mt-6">
+					<button mat-stroked-button class="mr-3 w-full"
+						[color]="'primary'" type="button"
+						routerLink="register">Register
+					</button>
+
+					<button
+						class="fuse-mat-button-large w-full"
+						mat-flat-button
+						[color]="'primary'"
+						[disabled]="signInForm.disabled"
+						type="button"
+						(click)="signIn()">
+						<span *ngIf="!signInForm.disabled">
+							Sign in
+						</span>
+						<mat-progress-spinner
+							*ngIf="signInForm.disabled"
+							[diameter]="24"
+							[mode]="'indeterminate'">
+						</mat-progress-spinner>
+					</button>
+				</div>
             </form>
         </div>
     </div>

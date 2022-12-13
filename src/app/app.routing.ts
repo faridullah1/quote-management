@@ -8,12 +8,12 @@ import { LayoutComponent } from 'app/layout/layout.component';
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 export const appRoutes: Route[] = [
 
-    {path: '', pathMatch : 'full', redirectTo: 'admin_users'},
+    {path: '', pathMatch : 'full', redirectTo: 'dashboard'},
 
     // After the user signs in, the sign in page will redirect the user to the 'signed-in-redirect'
     // path. Below is another redirection for that path to redirect the user to the desired
     // location. This is a small convenience to keep all main routes together here on this file.
-    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'users'},
+    {path: 'signed-in-redirect', pathMatch : 'full', redirectTo: 'dashboard'},
 
     // Auth routes for guests
     {
@@ -52,20 +52,8 @@ export const appRoutes: Route[] = [
 		component: LayoutComponent,
         children   : [
 			{
-				path: 'admin_users', loadChildren: () =>
-				import('app/modules/admin/administrators/administrators.module').then(m => m.AdministratorsModule)
-			},
-			{
-				path: 'users', loadChildren: () =>
-				import('app/modules/admin/users/users.module').then(m => m.UsersModule)
-			},
-			{
-				path: 'projects', loadChildren: () =>
-				import('app/modules/admin/projects/projects.module').then(m => m.ProjectsModule)
-			},
-			{
-				path: 'tenders', loadChildren: () =>
-				import('app/modules/admin/tenders/tenders.module').then(m => m.TendersModule)
+				path: 'dashboard', loadChildren: () =>
+				import('app/modules/admin/admin.module').then(m => m.AdminModule)
 			}
         ]
     }

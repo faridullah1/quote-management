@@ -1,6 +1,7 @@
 import { FuseNavigationService } from '@fuse/components/navigation';
 import { Component } from '@angular/core';
-import { quote-managementAppNavigation } from './layout/common/navigation';
+import { QuoteManagementAppNavigation } from './layout/common/navigation';
+
 
 @Component({
     selector   : 'app-root',
@@ -14,6 +15,6 @@ export class AppComponent
      */
     constructor(private _fuseNavigationService: FuseNavigationService)
     {
-		this._fuseNavigationService.storeNavigation('main', quote-managementAppNavigation.navigation);
+		this._fuseNavigationService.storeNavigation('main', QuoteManagementAppNavigation.navigation);
     }
 }
