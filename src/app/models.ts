@@ -1,13 +1,21 @@
-export interface GenericApiResponse {
-	status: 'success' | 'failed';
-	data: any;
-};
+export interface User {
+	email: string;
+	password: string;
+	company: boolean;
+}
 
-export interface SubscriptionPlan {
-	planId: number;
-	title: string;
+export interface Quote {
+	id: string;
+	name: string;
+	startDate: Date;
+	endDate: Date;
+	status: 'Pending' | 'Approved';
+	items: QouteItem[];
+}
+
+export interface QouteItem {
+	name: string;
+	quantity: number;
 	price: number;
-	coins: number;
-	isRecommended: boolean;
-	benefits: string[];
-};
+	editable?: boolean;
+}

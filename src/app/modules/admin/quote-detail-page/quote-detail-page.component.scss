@@ -1,0 +1,120 @@
+.details {
+	background-color: #f6f6fe;
+	height: 100%;
+	width: 100%;
+	padding: 1rem;
+	font-size: .8rem;
+
+	$color-blue: #84cfeb;
+
+	.card {
+		background-color: #fff;
+		padding: 1rem;
+		margin-right: 2rem;
+		border-radius: .8rem;
+		box-shadow: -2px 8px 8px 0px #dddddd;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		flex: 0 0 70%;
+
+		.label {
+			color: #acb2b8;
+			margin-bottom: .4rem;
+		}
+	}
+
+	.actions {
+		flex: 1;
+		
+		.btn {
+			margin-bottom: .5rem;
+			border-radius: 2rem;
+			font-size: .8rem;
+			padding: 4px 0;
+			font-weight: 500;
+		}
+
+		.btn-primary {
+			background-color: var(--color-primary);
+			border: 1px solid var(--color-primary);
+		}
+
+		.btn-danger {
+			background-color: #fff;
+			border: 1px solid #f06d81;
+			color: #f06d81;
+		}
+
+		.btn-import {
+			background-color: #fff;
+			margin-top: 2rem;
+		}
+	}
+
+	.btn-black {
+		margin-bottom: .5rem;
+		padding: 6px 1rem;
+		border-radius: 2rem;
+		font-size: .8rem;
+		background-color: #1d2354;
+		color: #fff;
+	}
+
+	.table {
+		width: 100%;
+		margin-top: 1rem;
+
+		tbody {
+			box-shadow: -2px 8px 8px 0px #dddddd;
+		}
+
+		th {
+			color: #acb2b8;
+			font-size: .7rem;
+			font-weight: 500;
+			padding: 0 1.5rem .4rem;
+			text-align: left;
+		}
+
+		td {
+			background-color: #fff;
+			color: #acb2b8;
+			border-bottom: 1px solid #eee;
+
+			font-weight: 500;
+			padding: .8rem 1.5rem;
+			font-size: .8rem;
+		}
+
+		.id-column {
+			color: $color-blue;
+			width: 1%;
+		}
+
+		.material-icons {
+			font-size: 1rem;
+		}
+
+		.fg-blue {
+			color: $color-blue;
+		}
+
+		.fg-green {
+			color: var(--color-primary);
+		}
+
+		.fg-danger {
+			color: #f06d81;
+		}
+	}
+
+	.cell {
+		width: 20%;
+	}
+}
+
+:host::ng-deep.mat-form-field-wrapper {
+	margin-bottom: 0 !important;
+}

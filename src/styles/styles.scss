@@ -2,3 +2,28 @@
 /*  @ Import/write your custom styles here.
 /*  @ Styles from this file will override 'vendors.scss' and Fuse's base styles.
 /* ----------------------------------------------------------------------------------------------------- */
+
+:root {
+	--color-primary: #39c66a;
+}
+
+.pointer {
+	cursor: pointer;
+}
+
+.status {
+	width: 5rem;
+	padding: 2px 10px;
+	border-radius: 10px;
+	text-align: center;
+}
+
+.approved {
+	background-color: var(--color-primary);
+	color: #000;
+}
+
+.pending {
+	background-color: gray;
+	color: #fff;
+}

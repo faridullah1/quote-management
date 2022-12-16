@@ -1,0 +1,62 @@
+.quotes-container {	
+	display: flex;
+	flex-direction: column;
+
+	$color-blue: #84cfeb;
+
+	.search-container {
+		width: 20rem;
+		margin-right: 2rem;
+	}
+
+	.btn {
+		width: 13rem;
+		border-radius: 2rem;
+		padding: .4rem 0;
+		background-color: var(--color-primary);
+		color: #fff;
+		// margin-bottom: 1rem;
+	}
+
+	.table {
+		width: 100%;
+		
+		tbody {
+			box-shadow: -2px 8px 8px 0px #dddddd;
+		}
+		
+		th {
+			color: #acb2b8;
+			font-size: .7rem;
+			font-weight: 500;
+			padding: 0 2rem .8rem;
+			text-align: left;
+		}
+
+		td {
+			background-color: #fff;
+			color: #acb2b8;
+			font-weight: 500;
+			padding: 1.3rem 2rem;
+			font-size: .8rem;
+			margin-bottom: 1rem;
+		}
+
+		.id-column {
+			color: $color-blue;
+			width: 4rem;
+		}
+	}
+
+	.fg-primary {
+		color: $color-blue;
+	}
+
+	.action-icon {
+		font-size: 1.1rem;
+	}
+}
+
+:host::ng-deep.mat-form-field-wrapper {
+	margin-bottom: 0 !important;
+}
