@@ -29,7 +29,7 @@ export class QuotesComponent implements OnInit {
 	}
 
 	getAllQuotes(search: string | null = null): void {
-		this.allQuotes = this.quoteService.quotes;
+		this.allQuotes = this.quoteService.getAllQuotes();
 		this.quotes = this.allQuotes;
 
 		if (search) {

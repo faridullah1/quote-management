@@ -13,6 +13,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class QuoteDetailPageComponent {
 	quote!: Quote;
+	quoteId: string;
 
 	constructor(private route: ActivatedRoute,
 				private router: Router,
@@ -20,8 +21,21 @@ export class QuoteDetailPageComponent {
 				private confirmationService: FuseConfirmationService,
 				private quoteService: QuoteService)
 	{
-		const quoteId = this.route.snapshot.paramMap.get('id') as string;
-		this.getQuoteDetails(quoteId);
+		this.quoteId = this.route.snapshot.paramMap.get('id') as string;
+		if (this.quoteId) {
+			this.getQuoteDetails(this.quoteId);
+		}
+		else
+		{
+			this.quote = {
+				id: (this.quoteService.getAllQuotes().length + 1).toString(),
+				name: '',
+				status: 'Draft',
+				startDate: new Date(),
+				endDate: new Date(),
+				items: []
+			};
+		}
 	}
 
 	getQuoteDetails(id: string): void {
@@ -29,9 +43,18 @@ export class QuoteDetailPageComponent {
 	}
 
 	onConfirm(): void {
-		this.quoteService.setQuote(this.quote);
+		if (this.quoteId)
+		{
+			this.quoteService.updateQuote(this.quote);
+			this.toaster.success('Quote updated successfully');
+		}
+		else
+		{
+			this.quoteService.addQuote(this.quote);
+			this.toaster.success('New Quote added successfully');
+		}
+
 		this.router.navigateByUrl('dashboard');
-		this.toaster.success('Quote saved successfully');
 	}
 
 	onDeleteQuote(): void {

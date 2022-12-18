@@ -6,7 +6,7 @@ import { Quote } from './models';
   providedIn: 'root'
 })
 export class QuoteService {
-	quotes: Quote[];
+	private quotes: Quote[];
 
   	constructor() {
 		this.quotes = [
@@ -26,11 +26,15 @@ export class QuoteService {
 		return this.quotes;
 	}
 
+	addQuote(quote: Quote): void {
+		this.quotes.push(quote);
+	}
+
 	getQuote(id: string): Quote | undefined {
 		return this.quotes.find(quote => quote.id === id);
 	}
 
-	setQuote(quote: Quote): void {
+	updateQuote(quote: Quote): void {
 		const idx = this.quotes.indexOf(quote);
 		this.quotes[idx] = quote;
 	}

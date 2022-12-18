@@ -8,6 +8,9 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatDividerModule } from '@angular/material/divider';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+
 
 const modules: any[] = [
 	MatFormFieldModule,
@@ -18,7 +21,9 @@ const modules: any[] = [
 	MatCheckboxModule,
 	MatProgressBarModule,
 	MatProgressSpinnerModule,
-	MatDividerModule
+	MatDividerModule,
+	MatDatepickerModule,
+	MatNativeDateModule
 ];
 
 @NgModule({

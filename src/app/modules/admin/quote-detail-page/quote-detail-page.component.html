@@ -5,22 +5,42 @@
 		<div class="card">
 			<div>
 				<div class="label">Status</div>
-				<div class="status" [class]="quote?.status.toLowerCase()">{{ quote?.status }}</div>
+				<div class="status" *ngIf="quote" [class]="quote?.status.toLowerCase()">{{ quote?.status }}</div>
 			</div>
 	
-			<div>
+			<div [class.field]="!quoteId">
 				<div class="label">Name</div>
-				<div>{{ quote?.name }}</div>
+				<mat-form-field class="w-full" *ngIf="!quoteId; else existingQoute;">
+					<input type="text" matInput [(ngModel)]="quote.name">
+				</mat-form-field>
+
+				<ng-template #existingQoute>
+					<span #existingQoute>{{ quote?.name }}</span>
+				</ng-template>
 			</div>
 	
-			<div>
+			<div [class.field]="!quoteId">
 				<div class="label">Start Date</div>
-				<div>{{ quote?.startDate | date:'dd.MM.YYYY' }}</div>
+
+				<mat-form-field class="w-full" *ngIf="!quoteId;">
+					<input matInput [matDatepicker]="picker" [(ngModel)]="quote.startDate">
+					<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+
+				<span *ngIf="quoteId">{{ quote?.startDate | date:'dd.MM.YYYY' }}</span>
 			</div>
 	
-			<div>
+			<div [class.field]="!quoteId">
 				<div class="label">End Date</div>
-				<div>{{ quote?.endDate | date:'dd.MM.YYYY' }}</div>
+
+				<mat-form-field class="w-full" *ngIf="!quoteId;">
+					<input matInput [matDatepicker]="picker" [(ngModel)]="quote.endDate">
+					<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+					<mat-datepicker #picker></mat-datepicker>
+				</mat-form-field>
+
+				<span *ngIf="quoteId">{{ quote?.endDate | date:'dd.MM.YYYY' }}</span>
 			</div>
 		</div>
 
@@ -79,8 +99,8 @@
 
 					<td class="cell">
 						<span class="material-icons fg-blue pointer" *ngIf="!item.editable" (click)="onEdit(item)">edit</span>
-						<span [class.btn-primary]="item.editable" class="material-icons fg-green pointer" *ngIf="item.editable" (click)="onDone(item)">done</span>
-						<span [class.btn-danger]="item.editable" class="material-icons fg-danger pointer" 
+						<span [class.action-btn-primary]="item.editable" class="material-icons fg-green pointer" *ngIf="item.editable" (click)="onDone(item)">done</span>
+						<span [class.action-btn-danger]="item.editable" class="material-icons fg-danger pointer" 
 							(click)="onDeleteQuoteItem(item)">{{ item.editable ? 'close' : 'delete' }}
 						</span>
 					</td>

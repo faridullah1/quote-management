@@ -23,6 +23,10 @@
 			color: #acb2b8;
 			margin-bottom: .4rem;
 		}
+
+		.field {
+			width: 20%;
+		}
 	}
 
 	.actions {
@@ -34,6 +38,7 @@
 			font-size: .8rem;
 			padding: 4px 0;
 			font-weight: 500;
+			border: 1px solid #eee;
 		}
 
 		.btn-primary {
@@ -114,7 +119,7 @@
 		width: 20%;
 	}
 
-	.btn-primary {
+	.action-btn-primary {
 		background: #39c66a;
 		color: #fff !important;
 		border-radius: 3px;
@@ -122,7 +127,7 @@
 		margin-right: 4px;
 	}
 
-	.btn-danger {
+	.action-btn-danger {
 		background: #fd5858;
 		color: #fff !important;
 		border-radius: 3px;
