@@ -34,6 +34,10 @@
 					<span class="material-icons fg-primary action-icon pointer">visibility</span>
 				</td>
 			</tr>
+
+			<tr *ngIf="!quotes || quotes.length === 0">
+				<td colspan="6">No record found</td>
+			</tr>
 		</tbody>
 	</table>
 </div>

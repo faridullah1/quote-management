@@ -17,8 +17,8 @@ export class QuoteService {
 					{ name: 'Test Item', price: 1000, quantity: 2 }
 				]
 			},
-			{ id: '2', name: 'Dummy Quote', startDate: new Date(), endDate: new Date(), status: 'Pending', items: [] },
-			{ id: '3', name: 'Another Quote', startDate: new Date(), endDate: new Date(), status: 'Pending', items: [] }
+			{ id: '2', name: 'Dummy Quote', startDate: new Date(), endDate: new Date(), status: 'Draft', items: [] },
+			{ id: '3', name: 'Another Quote', startDate: new Date(), endDate: new Date(), status: 'Draft', items: [] }
 		];
 	}
 

@@ -9,7 +9,7 @@ export interface Quote {
 	name: string;
 	startDate: Date;
 	endDate: Date;
-	status: 'Pending' | 'Approved';
+	status: 'Draft' | 'Approved';
 	items: QouteItem[];
 }
 

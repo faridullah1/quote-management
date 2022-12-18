@@ -16,7 +16,9 @@ export class QuotesComponent implements OnInit {
 	quotes: Quote[] = [];
 	searchFC = new FormControl();
 
-	constructor(private router: Router, private quoteService: QuoteService) {
+	constructor(private router: Router,
+				private quoteService: QuoteService)
+	{
 		this.searchFC.valueChanges.pipe(debounceTime(300), distinctUntilChanged()).subscribe((search: string) => {
 			this.getAllQuotes(search.toLowerCase());
 		});

@@ -79,8 +79,10 @@
 
 					<td class="cell">
 						<span class="material-icons fg-blue pointer" *ngIf="!item.editable" (click)="onEdit(item)">edit</span>
-						<span class="material-icons fg-green pointer" *ngIf="item.editable" (click)="onDone(item)">done</span>
-						<span class="material-icons fg-danger pointer" (click)="onDeleteQuoteItem(item)">delete</span>
+						<span [class.btn-primary]="item.editable" class="material-icons fg-green pointer" *ngIf="item.editable" (click)="onDone(item)">done</span>
+						<span [class.btn-danger]="item.editable" class="material-icons fg-danger pointer" 
+							(click)="onDeleteQuoteItem(item)">{{ item.editable ? 'close' : 'delete' }}
+						</span>
 					</td>
 				</tr>
 

@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { FuseConfirmationService } from '@fuse/services/confirmation';
 import { Quote, QouteItem } from 'app/models';
 import { QuoteService } from 'app/quote.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -14,6 +16,8 @@ export class QuoteDetailPageComponent {
 
 	constructor(private route: ActivatedRoute,
 				private router: Router,
+				private toaster: ToastrService,
+				private confirmationService: FuseConfirmationService,
 				private quoteService: QuoteService)
 	{
 		const quoteId = this.route.snapshot.paramMap.get('id') as string;
@@ -27,11 +31,22 @@ export class QuoteDetailPageComponent {
 	onConfirm(): void {
 		this.quoteService.setQuote(this.quote);
 		this.router.navigateByUrl('dashboard');
+		this.toaster.success('Quote saved successfully');
 	}
 
 	onDeleteQuote(): void {
-		this.quoteService.deleteQuote(this.quote);
-		this.router.navigateByUrl('dashboard');
+		const dialog = this.confirmationService.open({
+			title: 'Delete Quote?',
+			message: 'Are you sure, you want to delete this quote'
+		});
+
+		dialog.afterClosed().subscribe((action: 'confirmed' | 'cancelled') => {
+			if (action === 'confirmed') {
+				this.quoteService.deleteQuote(this.quote);
+				this.router.navigateByUrl('dashboard');
+				this.toaster.success('Quote deleted successfully');
+			}
+		});
 	}
 
 	onAddItem(): void {

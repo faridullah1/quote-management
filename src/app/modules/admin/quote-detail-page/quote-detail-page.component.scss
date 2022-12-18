@@ -113,6 +113,21 @@
 	.cell {
 		width: 20%;
 	}
+
+	.btn-primary {
+		background: #39c66a;
+		color: #fff !important;
+		border-radius: 3px;
+		padding: 2px;
+		margin-right: 4px;
+	}
+
+	.btn-danger {
+		background: #fd5858;
+		color: #fff !important;
+		border-radius: 3px;
+		padding: 2px;
+	}
 }
 
 :host::ng-deep.mat-form-field-wrapper {
