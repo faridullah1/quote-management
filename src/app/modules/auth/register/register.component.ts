@@ -47,10 +47,10 @@ export class RegisterComponent implements OnInit
     {
         // Create the form
         this.registerationForm = this._formBuilder.group({
-			company	          : [false, Validators.requiredTrue],
+			company	          : [false, Validators.required],
             email             : ['', [Validators.required, Validators.email]],
             password          : ['', Validators.required],
-			confirmPassword   : ['', Validators.required, confirmedValidator]
+			confirmPassword   : ['', [Validators.required, confirmedValidator]]
         }, {validators: [confirmedValidator('password', 'confirmPassword')]});
     }
 
