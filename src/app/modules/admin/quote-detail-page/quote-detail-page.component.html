@@ -1,5 +1,11 @@
 <div class="details">
-	<h2 class="text-3xl font-semibold tracking-tight leading-8 mb-2" *ngIf="quote">Requests for Proposals # {{ quote.id }}</h2>
+	<div class="flex items-center mb-2">
+		<mat-icon class="mr-2 pointer arrow-left" routerLink="/dashboard">keyboard_backspace</mat-icon>
+
+		<h2 class="text-3xl font-semibold tracking-tight leading-8" *ngIf="quote">
+			Requests for Proposals # {{ quote.id }}
+		</h2>
+	</div>
 
 	<div class="flex" style="margin-bottom: 2rem;">
 		<div class="card">
