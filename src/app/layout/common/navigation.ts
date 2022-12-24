@@ -9,7 +9,7 @@ export class QuoteManagementAppNavigation
 			{
 				type: 'basic',
 				icon: 'dashboard',
-				link: 'dashboard',
+				link: 'quotes',
 				title: 'Dashboard',
 				id: 'dashboard',
 			}
@@ -18,7 +18,7 @@ export class QuoteManagementAppNavigation
 			{
 				type: 'basic',
 				icon: 'dashboard',
-				link: 'dashboard',
+				link: 'quotes',
 				title: 'Dashboard',
 				id: 'dashboard',
 			}

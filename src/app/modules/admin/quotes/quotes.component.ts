@@ -38,10 +38,10 @@ export class QuotesComponent implements OnInit {
 	}
 
 	onCreateQuote(): void {
-		this.router.navigateByUrl('/dashboard/quote/new');
+		this.router.navigateByUrl('/quotes/new');
 	}
 
 	onRowClick(quote: Quote): void {
-		this.router.navigate(['/dashboard/quote', quote.id]);
+		this.router.navigate(['/quotes', quote.id]);
 	}
 }

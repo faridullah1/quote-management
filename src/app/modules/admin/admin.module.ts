@@ -13,8 +13,8 @@ import { QuoteDetailPageComponent } from './quote-detail-page/quote-detail-page.
 
 const routes: Route[] = [
 	{ path: '', component: DashboardComponent },
-	{ path: 'quote/new', component: QuoteDetailPageComponent, canActivate: [AuthGuard] },
-	{ path: 'quote/:id', component: QuoteDetailPageComponent, canActivate: [AuthGuard] }
+	{ path: 'new', component: QuoteDetailPageComponent, canActivate: [AuthGuard] },
+	{ path: ':id', component: QuoteDetailPageComponent, canActivate: [AuthGuard] }
 ];
 
 @NgModule({
