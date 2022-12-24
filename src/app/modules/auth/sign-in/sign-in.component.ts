@@ -61,8 +61,11 @@ export class AuthSignInComponent implements OnInit
     signIn(): void
     {
         // Return if the form is invalid
-        if ( this.signInForm.invalid )
+        if ( this.signInForm.invalid)
         {
+			this.signInForm.get('email').markAsTouched();
+			this.signInForm.get('password').markAsTouched();
+
             return;
         }
 
