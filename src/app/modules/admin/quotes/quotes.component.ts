@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Quote } from 'app/models';
 import { QuoteService } from 'app/quote.service';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { Subject } from 'rxjs';
 
 
 @Component({
@@ -12,19 +11,29 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
   styleUrls: ['./quotes.component.scss']
 })
 export class QuotesComponent implements OnInit {
+	@Input() actions: Subject<any>;
+
 	allQuotes: Quote[] = [];
 	quotes: Quote[] = [];
-	searchFC = new FormControl();
 
 	constructor(private router: Router,
 				private quoteService: QuoteService)
-	{
-		this.searchFC.valueChanges.pipe(debounceTime(300), distinctUntilChanged()).subscribe((search: string) => {
-			this.getAllQuotes(search.toLowerCase());
-		});
-	}
+	{ }
 
 	ngOnInit(): void {
+		this.actions.subscribe((resp: any) =>
+		{
+			switch(resp.type) {
+				case 'add':
+					this.router.navigateByUrl('/quotes/new');
+					break;
+
+				case 'search':
+					this.getAllQuotes(resp.value);
+					break;
+			}
+		});
+
 		this.getAllQuotes();
 	}
 

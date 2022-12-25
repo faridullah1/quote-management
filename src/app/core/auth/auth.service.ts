@@ -89,18 +89,29 @@ export class AuthService
 	 */
     register(credentials: { email: string; password: string; company: false }): Observable<any>
     {
-		const response = {
-			// eslint-disable-next-line max-len, @typescript-eslint/naming-convention
-			access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOjEsIm5hbWUiOiJGYXJpZCB1bGxoYSIsImVtYWlsIjoiZmFyaWR1bGxhaDk5NkBnbWFpbC5jb20iLCJleHAiOjE3MDM5MzUxNTh9.FmgayvzwhVMabOhLHJCsiK3-ANEYqXf7I14gvESWppc',
-			user: { id: 1, name: 'Farid ullah', email: 'faridullah996@gmail.com' }
-		};
+		// eslint-disable-next-line @typescript-eslint/naming-convention
+		let response = { access_token: '', user: {} };
+
+		if (!credentials.company) {
+			response = {
+				// eslint-disable-next-line max-len, @typescript-eslint/naming-convention
+				access_token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOjEsIm5hbWUiOiJGYXJpZCB1bGxhaCIsImVtYWlsIjoiZmFyaWR1bGxhaDk5NkBnbWFpbC5jb20iLCJjb21wYW55IjpmYWxzZSwiZXhwIjoxNzAzOTM1MTU4fQ.Za1LXxNhiUIikAeuiR7bOIQ0W3RrKBSHDsC8VTbmekw',
+				user: { id: 1, name: 'Farid ullah', email: 'faridullah996@gmail.com', company: false }
+			};
+		}
+		else {
+			// eslint-disable-next-line max-len
+			response.access_token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwiaWQiOjEsIm5hbWUiOiJGYXJpZCB1bGxoYSIsImVtYWlsIjoiZmFyaWR1bGxhaDk5NkBnbWFpbC5jb20iLCJjb21wYW55Ijp0cnVlLCJleHAiOjE3MDM5MzUxNTh9.lYsIKsPZuFwj-H4StmxF30Keeukxsn1c5otMItStBgE';
+			response.user = { id: 1, name: 'Farid ullah', email: 'faridullah996@gmail.com', company: true };
+		}
 
 		// eslint-disable-next-line max-len
 		this.accessToken = response.access_token;
 		const { email, name, id} = jwt_decode(this.accessToken) as User;
 
 		// Store the user on the user service
-		this._userService.user = { id, email, name };
+		this._userService.user = { id, email, name, company: credentials.company };
+
 
 		// Return a new observable with the response
 		return of(response);
@@ -150,8 +161,8 @@ export class AuthService
             return of(false);
         }
 
-		const { email, name, id} = jwt_decode(this.accessToken) as User;
-		this._userService.user = { name, email, id };
+		const { email, name, id, company } = jwt_decode(this.accessToken) as User;
+		this._userService.user = { id, email, name, company };
 
 		return of(true);
     }

@@ -1,0 +1,18 @@
+.dashboard {
+	.search-container {
+		width: 20rem;
+		margin-right: 2rem;
+	}
+	
+	.btn {
+		width: 13rem;
+		border-radius: 2rem;
+		padding: .4rem 0;
+		background-color: var(--color-primary);
+		color: #fff;
+	}	
+}
+
+:host::ng-deep.mat-form-field-wrapper {
+	margin-bottom: 0 !important;
+}

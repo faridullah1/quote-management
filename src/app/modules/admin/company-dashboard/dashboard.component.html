@@ -1,0 +1,15 @@
+<div class="dashboard w-full p-4">
+	<h1 class="text-3xl font-semibold tracking-tight leading-8 mb-2">Dashboard</h1>
+
+	<div class="header flex items-center">
+		<div class="search-container">
+			<mat-form-field class="w-full">
+				<input type="text" matInput placeholder="Search" class="form-control" [formControl]="searchFC">
+			</mat-form-field>
+		</div>
+
+		<button class="btn" (click)="onCreateQuote()">Create</button>
+	</div>
+
+	<app-quotes [actions]="actions"></app-quotes>
+</div>
